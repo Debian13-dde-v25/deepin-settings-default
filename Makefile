@@ -1,5 +1,5 @@
 
-VERSION := 23.1
+VERSION := 25
 RELEASE :=
 ARCH_BUILD :=$(shell uname -m)
 
@@ -59,12 +59,14 @@ install:
 	mkdir -p ${DESTDIR}/usr/share/i18n
 	mkdir -p ${DESTDIR}/usr/share/distro-info
 	mkdir -p ${DESTDIR}/usr/share/python-apt/templates
+	mkdir -p ${DESTDIR}/usr/share/deepin/distribution
 	#mkdir -p ${DESTDIR}/usr/share/backgrounds/deepin
 	mkdir -p ${DESTDIR}/usr/share/deepin
 	install -Dm644 files/i18n_dependent.json  ${DESTDIR}/usr/share/i18n/i18n_dependent.json
 	install -Dm644 files/language_info.json  ${DESTDIR}/usr/share/i18n/language_info.json
 	install -Dm644 files/desktop-version ${DESTDIR}/usr/lib/deepin/desktop-version
 	install -Dm644 files/lsb-release     ${DESTDIR}/etc/lsb-release
+	install -Dm644 files/os-version      ${DESTDIR}/etc/os-version
 	#install -Dm644 files/appstore.json     ${DESTDIR}/etc/appstore.json
 	install -Dm644 files/deepin-logo.png ${DESTDIR}/usr/share/plymouth/deepin-logo.png
 	#install -Dm644 files/desktop.jpg     ${DESTDIR}/usr/share/backgrounds/deepin/desktop.jpg
@@ -73,3 +75,7 @@ install:
 	[ -e files/logind.conf ] && install -Dm644 files/logind.conf ${DESTDIR}/etc/systemd/logind.conf.d/deepin-base.conf
 	install -Dm644 files/Deepin.info     ${DESTDIR}/usr/share/python-apt/templates/Deepin.info
 	install -Dm644 files/Deepin.mirrors     ${DESTDIR}/usr/share/python-apt/templates/Deepin.mirrors
+	install -Dm644 distribution.info ${DESTDIR}/usr/share/deepin/distribution.info
+	install -Dm644 distribution/distribution_logo.svg ${DESTDIR}/usr/share/deepin/distribution/distribution_logo.svg
+	install -Dm644 distribution/distribution_logo_light.svg ${DESTDIR}/usr/share/deepin/distribution/distribution_logo_light.svg
+	install -Dm644 distribution/distribution_logo_transparent.svg ${DESTDIR}/usr/share/deepin/distribution/distribution_logo_transparent.svg
